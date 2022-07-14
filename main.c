@@ -5,6 +5,7 @@
 #define P 'p'
 #define A 'A'
 #define B 'B'
+#define C 'C'
 
 int leValores(char aux_nome, int paramenter)
 {
@@ -59,6 +60,25 @@ void imprimeMatriz(char nome, int linha, int coluna, float matriz[linha][coluna]
     }
 }
 
+float calculaMatrizC(int m, int n, int p, float matrizUm[m][n], float matrizDois[n][p], float matrizTres[m][p])
+{
+    int resultado;
+    for (int x = 0; x < m; x++)
+    {
+        for (int y = 0; y < p; y++)
+        {
+            resultado = 0;
+            for (int z = 0; z < m; z++)
+            {
+                resultado += matrizUm[x][z] * matrizDois[z][y]; // realiza a soma e a multiplicação dos termos
+            }
+            matrizTres[x][y] = resultado; // atribui o valor da operação anterior a uma posição da matriz C
+        }
+    }
+
+    return matrizTres[m][p];
+}
+
 int main()
 {
     int m = 0, n = 0, p = 0;
@@ -77,6 +97,10 @@ int main()
     float matrizB[n][p];
     matrizB[n][p] = lematrizes('B', n, p, matrizB);
     imprimeMatriz(B, n, p, matrizB);
+
+    float matrizC[n][p];
+    matrizC[n][p] = calculaMatrizC(m, n, p, matrizA, matrizB, matrizC);
+    imprimeMatriz(C, m, p, matrizC);
 
     return 0;
 }
