@@ -11,6 +11,7 @@ int leValores(char aux_nome, int paramenter)
 {
     printf("\nMe informa o valor do parametro %c: ", aux_nome);
     scanf("%i", &paramenter);
+    validavalores(aux_nome, paramenter);
     return paramenter;
 }
 
@@ -84,11 +85,8 @@ int main()
     int m = 0, n = 0, p = 0;
 
     m = leValores(M, m);
-    validavalores(M, m);
     n = leValores(N, n);
-    validavalores(N, n);
     p = leValores(P, p);
-    validavalores(P, p);
 
     float matrizA[m][n];
     matrizA[m][n] = lematrizes(A, m, n, matrizA);
